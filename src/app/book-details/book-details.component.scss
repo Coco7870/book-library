@@ -1,0 +1,49 @@
+/* book-details.component.css */
+.book-details-container {
+    padding: 20px;
+  }
+  
+  .book-details-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+  }
+  
+  .book-cover img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .book-info h2 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .book-info ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .book-info ul li {
+    margin-bottom: 5px;
+  }
+  
+  .book-info button {
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .book-info button:hover {
+    background-color: #003399;
+  }

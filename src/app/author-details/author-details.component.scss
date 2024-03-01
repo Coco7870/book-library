@@ -1,0 +1,49 @@
+/* author-details.component.css */
+.author-details-container {
+    padding: 20px;
+  }
+  
+  .author-details-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+  }
+  
+  .author-photo img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .author-info h2 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  
+  .author-info p {
+    margin-bottom: 5px;
+  }
+  
+  .author-subjects h4 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .author-subjects ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .author-subjects ul li {
+    display: inline-block;
+    margin-right: 10px;
+    background: #e1e1e1;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  

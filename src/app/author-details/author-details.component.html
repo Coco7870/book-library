@@ -1,0 +1,21 @@
+<!-- author-details.component.html -->
+
+    <div class="author-details-card">
+      <div class="author-photo">
+        <img [src]="author.photoUrl" alt="{{ author.name }}">
+      </div>
+      <div *ngIf="author" class="author-info">
+        <h2>{{ author.name }}</h2>
+        <p><strong>Birth Date:</strong> {{ author.birth_date }}</p>
+        <p><strong>Top Work:</strong> {{ author.top_work }}</p>
+        <p><strong>Work Count:</strong> {{ author.work_count }}</p>
+        <div class="author-subjects">
+          <h4>Top Subjects:</h4>
+          <ul>
+            <li *ngFor="let subject of author.top_subjects| slice:0:5; let i = index ">
+              {{ subject }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>

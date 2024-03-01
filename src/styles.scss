@@ -1,0 +1,82 @@
+/* Base styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navbar styles */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 0.5em;
+  }
+  
+  nav img {
+    width: 50px; /* Adjust as necessary */
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    padding: 0 1em;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Book list styles */
+  .subject-section {
+    padding: 1em;
+    background-color: #f8f8f8;
+  }
+  
+  .book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  
+  .book-item {
+    border: 1px solid #ddd;
+    padding: 1em;
+    width: calc(33.333% - 1em); /* three items per row */
+  }
+  
+  .book-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .book-item {
+      width: calc(50% - 1em); /* two items per row */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav ul {
+      flex-direction: column;
+      padding: 0;
+    }
+  
+    nav ul li {
+      padding: 0.5em 0;
+    }
+  
+    .book-item {
+      width: 100%; /* one item per row */
+    }
+  }
