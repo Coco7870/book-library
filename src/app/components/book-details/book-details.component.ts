@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BookService } from '../service/book.service';
-import { WishlistService } from '../service/wishlist.service';
+import { BookService } from '../../services/book.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-book-details',
@@ -26,8 +26,8 @@ export class BookDetailsComponent {
   }
 
   getCoverImageUrl(book: any): string {
-    if (book.cover_id) {
-      return `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`;
+    if (book.covers) {
+      return `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg`;
     } else {
       return 'https://via.placeholder.com/150'; // Provide a default book cover path
     }

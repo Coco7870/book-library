@@ -1,0 +1,19 @@
+<!-- search.component.html -->
+<div class="search-container">
+    <div class="search-input-group">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search for books..." class="search-input">
+      <select [(ngModel)]="searchCategory" class="search-category">
+        <option value="subject">Subject</option>
+      </select>
+      <button (click)="performSearch()">Search</button>
+    </div>
+  
+    <p class="search-description">
+      Enter a search term and select a category to find books.
+    </p>
+  
+    
+        <app-grid [books]="searchResults"></app-grid>
+   
+  </div>
+  

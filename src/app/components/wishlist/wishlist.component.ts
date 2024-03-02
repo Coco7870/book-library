@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WishlistService } from '../service/wishlist.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -24,7 +24,7 @@ export class WishlistComponent {
     if (book.cover_id) {
       return `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`;
     } else {
-      return 'https://via.placeholder.com/150'; // Provide a default book cover path
+      return 'https://via.placeholder.com/150x220?text=No+Cover'; // Provide a default book cover path
     }
   }
 }

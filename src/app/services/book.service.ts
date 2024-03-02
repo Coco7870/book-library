@@ -15,6 +15,6 @@ export class BookService {
     return this.http.get(`${this.apiUrl}subjects/${subject}`)
   }
   getBookById(id: string|null) {
-    return this.http.get(`${this.apiUrl}books/${id}.json`);
+    return this.http.get(`${this.apiUrl}works/${id}.json`);
   }
 }

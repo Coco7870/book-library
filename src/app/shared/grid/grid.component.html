@@ -1,21 +1,20 @@
-
-<h2 class="category-title">Subject: Finance</h2>
 <div class="book-grid">
+    <div *ngIf="books.length==0">No Books available</div>
     <div *ngFor="let book of books" class="book-card">
-      <div class="book-cover">
-        <img [src]="getCoverImageUrl(book)" alt="{{ book.title }}" >
+      <div class="book-cover"  (click)="goToBookDetails(book.key)">
+        <img [src]="getCoverImageUrl(book)" alt="{{ book.title }}"  onerror="this.src='https://via.placeholder.com/150x220?text=No+Cover';"> 
       </div>
       <div class="book-content">
         <div class="book-info">
-          <h3 class="book-title">{{ book.title }}</h3>
+          <h3  (click)="goToBookDetails(book.key)" class="book-title">{{ book.title }}</h3>
           <p (click)="goToAuthoDetails(book.authors[0].name)" class="book-author">by <span style="text-decoration: underline; cursor: pointer;">{{ book.authors[0].name }}</span> </p>
           <p class="book-year">Published: {{ book.first_publish_year }}</p>
         </div>
         <div class="book-actions">
             <button (click)="goToBookDetails(book.key)">more</button> | 
-         <button (click)="addToWishlist(book)">{{ isInWishlist(book) ? 'Added To Wishlist' : '+Wishlist' }} </button>
+         <button (click)="addToWishlist(book)">
+            {{ isInWishlist(book) ? 'Remove from Wishlist' : '+Wishlist' }} </button>
         </div>
       </div>
     </div>
   </div>
-  

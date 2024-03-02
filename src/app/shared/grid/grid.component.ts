@@ -1,37 +1,36 @@
-import { Component } from '@angular/core';
-import { BookService } from '../service/book.service';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
-import { WishlistService } from '../service/wishlist.service';
+import { BookService } from '../../services/book.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrl: './book-list.component.scss'
+  selector: 'app-grid',
+  templateUrl: './grid.component.html',
+  styleUrl: './grid.component.scss'
 })
-export class BookListComponent {
-  books: any[] = [];
+export class GridComponent {
+  @Input() books: any[] = [];
   wishlist: any;
   constructor(private router: Router, private bookService: BookService,private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
-    this.bookService.getBooksBySubject('finance.json?details=false')
-      .pipe(
-        map((data: any) => data.works.slice(0, 9))
-      )
-      .subscribe(books => {
-        this.books = books;
-      });
       this.wishlist = this.wishlistService.getWishlist();
   }
+ 
   addToWishlist(book: any) {
-    this.wishlistService.addToWishlist(book);
+    if(this.isInWishlist(book)) {
+      this.wishlistService.removeFromWishlist(book);
+    } else {
+      this.wishlistService.addToWishlist(book);
+    }
   }
+
   getCoverImageUrl(book: any): string {
     if (book.cover_id) {
       return `https://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg`;
     } else {
-      return 'https://via.placeholder.com/150'; // Provide a default book cover path
+      return 'https://via.placeholder.com/150x220?text=No+Cover'; // Provide a default book cover path
     }
   }
   goToBookDetails(bookKey: string) {
