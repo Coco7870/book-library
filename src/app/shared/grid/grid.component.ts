@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
 import { BookService } from '../../services/book.service';
 import { WishlistService } from '../../services/wishlist.service';
 

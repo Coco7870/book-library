@@ -25,9 +25,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       // Handle errors
       catchError((error: HttpErrorResponse) => {
         console.error('Error from error interceptor', error);
-        // this.snackBar.open(error.message, 'Error', {
-        //   duration: 3000,
-        // });
         return throwError(error);
       }),
       // Finalize the request
