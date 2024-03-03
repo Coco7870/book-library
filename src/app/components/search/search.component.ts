@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { BookService } from '../../services/book.service';
+import { Books, Work } from '../../models/books';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
-export class SearchComponent {
+export class SearchComponent implements OnDestroy  {
   searchTerm: string = '';
   searchCategory: string = 'subject';
-  searchResults: any[] = [];
-
+  searchResults: Work[] = [];
+  $ngDestroy=new Subject()
   constructor(private bookService: BookService) {}
 
   performSearch() {
     if (this.searchTerm) {
       this.bookService.getBooksBySubject(`${this.searchTerm}.json?details=false`)
-        .subscribe((results:any) => {
+      .pipe(takeUntil(this.$ngDestroy)).subscribe((results:Books) => {
           this.searchResults = results.works.slice(0, 9); // Limit to 9 results
         });
     }
@@ -27,6 +29,10 @@ export class SearchComponent {
     } else {
       return 'https://via.placeholder.com/150x220?text=No+Cover'; // Provide a default book cover path
     }
+  }
+  ngOnDestroy(): void {
+    this.$ngDestroy.next(true)
+    this.$ngDestroy.complete()
   }
 
 }

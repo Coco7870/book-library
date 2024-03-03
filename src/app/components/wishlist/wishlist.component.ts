@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WishlistService } from '../../services/wishlist.service';
+import { Work } from '../../models/books';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,7 +8,7 @@ import { WishlistService } from '../../services/wishlist.service';
   styleUrl: './wishlist.component.scss'
 })
 export class WishlistComponent {
-  wishlist: any[] = [];
+  wishlist: Work[] = [];
 
   constructor(private wishlistService: WishlistService) { }
 

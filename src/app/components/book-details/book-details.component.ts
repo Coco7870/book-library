@@ -1,28 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../../services/book.service';
 import { WishlistService } from '../../services/wishlist.service';
+import { BookDetail } from '../../models/book-details';
+import { Subject, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss'
 })
-export class BookDetailsComponent {
+export class BookDetailsComponent implements OnDestroy {
   book: any;
+  $ngDestroy = new Subject()
   wishlist: any;
   constructor(private route: ActivatedRoute, private bookService: BookService, private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     const bookId = this.route.snapshot.paramMap.get('id');
-    this.bookService.getBookById(bookId).subscribe((data: any) => {
+    this.bookService.getBookById(bookId).pipe(takeUntil(this.$ngDestroy)).subscribe((data: any) => {
       this.book = data;
-      this.book.coverUrl = this.getCoverImageUrl(data);
     });
-
-
     this.wishlist = this.wishlistService.getWishlist();
-
   }
 
   getCoverImageUrl(book: any): string {
@@ -31,6 +30,10 @@ export class BookDetailsComponent {
     } else {
       return 'https://via.placeholder.com/150'; // Provide a default book cover path
     }
+  }
+  ngOnDestroy(): void {
+    this.$ngDestroy.next(true)
+    this.$ngDestroy.complete()
   }
 
 
@@ -43,6 +46,6 @@ export class BookDetailsComponent {
   }
 
   isInWishlist(book: any): boolean {
-    return this.wishlist.some((item:any) => item.key === book.key);
+    return this.wishlist.some((item: any) => item.key === book.key);
   }
 }

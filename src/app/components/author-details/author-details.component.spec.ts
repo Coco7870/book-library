@@ -72,7 +72,7 @@ describe('AuthorDetailsComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     
-    const defaultPhotoUrl = 'https://via.placeholder.com/150';
-    expect(component.author.photoUrl).toEqual(defaultPhotoUrl);
+    const defaultPhotoUrl = 'https://via.placeholder.com/150x220?text=No+Cover';
+    expect(component.author?.photoUrl).toEqual(defaultPhotoUrl);
   });
 });

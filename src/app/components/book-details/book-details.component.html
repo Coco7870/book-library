@@ -1,14 +1,17 @@
-<div class="book-details-card">
-    <div class="book-cover" *ngIf="book">
-      <img [src]="getCoverImageUrl(book)" alt="{{ book.title }}"  onerror="this.src='https://via.placeholder.com/150x220?text=No+Cover';"> 
+<div class="book-details-container">
+  <h2 class="category-title">Book Detail</h2>
+  <div class="book-details-card">
+      <div class="book-cover" *ngIf="book">
+        <img [src]="getCoverImageUrl(book)" alt="{{ book.title }}"  onerror="this.src='https://via.placeholder.com/150x220?text=No+Cover';"> 
+      </div>
+      <div class="book-info" *ngIf="book" >
+        <h2>{{ book.title }}</h2>
+      <ul>
+          <li><strong>First Publish Year:</strong> {{ book.first_publish_date }}</li>
+          <li><strong>Title:</strong> {{ book.title }}</li>
+          <li><strong>Edition Count:</strong> {{ book.revision }}</li>
+        </ul>
+         <button (click)="toggleWishlist(book)">{{ isInWishlist(book) ? 'Remove from' : 'Add to' }} Wishlist</button>
+      </div>
     </div>
-    <div class="book-info" *ngIf="book" >
-      <h2>{{ book.title }}</h2>
-    <ul>
-        <li><strong>First Publish Year:</strong> {{ book.first_publish_date }}</li>
-        <li><strong>Title:</strong> {{ book.title }}</li>
-        <li><strong>Edition Count:</strong> {{ book.revision }}</li>
-      </ul>
-       <button (click)="toggleWishlist(book)">{{ isInWishlist(book) ? 'Remove from' : 'Add to' }} Wishlist</button>
-    </div>
-  </div>
+</div>

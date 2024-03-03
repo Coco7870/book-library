@@ -11,7 +11,7 @@ import { WishlistService } from '../../services/wishlist.service';
 export class GridComponent {
   @Input() books: any[] = [];
   wishlist: any;
-  constructor(private router: Router, private bookService: BookService,private wishlistService: WishlistService) { }
+  constructor(private router: Router,private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
       this.wishlist = this.wishlistService.getWishlist();
